@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: #f4f4f5;
+  color: #161616;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all duration-150 disabled:opacity-50 disabled:pointer-events-none whitespace-nowrap;
+  }
+  .btn-primary {
+    @apply btn bg-brand-red text-white shadow-sm hover:bg-brand-red-dark active:scale-[0.98];
+  }
+  .btn-dark {
+    @apply btn bg-brand-black text-white shadow-sm hover:bg-neutral-800 active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply btn bg-white text-brand-black border border-neutral-200 hover:border-neutral-300 hover:bg-neutral-50;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-neutral-600 hover:bg-neutral-100;
+  }
+  .btn-danger {
+    @apply btn bg-white text-red-600 border border-red-200 hover:bg-red-50;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-neutral-200/70 shadow-card;
+  }
+  .input {
+    @apply w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-brand-black placeholder:text-neutral-400 outline-none transition focus:border-brand-red focus:ring-2 focus:ring-brand-red/15;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wide text-neutral-500;
+  }
+  .field {
+    @apply flex flex-col;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide;
+  }
+  .section-title {
+    @apply flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-brand-black;
+  }
+  .table-base {
+    @apply w-full text-left text-sm;
+  }
+  .table-base thead th {
+    @apply border-b border-neutral-200 bg-neutral-50 px-4 py-3 text-xs font-bold uppercase tracking-wide text-neutral-500;
+  }
+  .table-base tbody td {
+    @apply border-b border-neutral-100 px-4 py-3 align-middle text-neutral-700;
+  }
+  .table-base tbody tr:hover {
+    @apply bg-neutral-50/80;
+  }
+  .cell-input {
+    @apply w-full rounded-md border border-transparent bg-transparent px-2 py-1.5 text-sm text-brand-black outline-none transition focus:border-brand-red focus:bg-white focus:ring-2 focus:ring-brand-red/15;
+  }
+}
