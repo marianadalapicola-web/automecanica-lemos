@@ -92,7 +92,35 @@ npm run lint         # ESLint
 npm run typecheck   # apenas checagem de tipos
 ```
 
-## 7. Estrutura do projeto
+## 7. Deploy (Vercel ou Netlify)
+
+O repositório já vem com `vercel.json` e `netlify.toml` prontos (build,
+diretório de saída e rewrite para SPA — necessário porque o React Router usa
+rotas no navegador).
+
+**Vercel:**
+1. Em [vercel.com/new](https://vercel.com/new), importe o repositório
+   `automecanica-lemos` (branch `claude/automecamica-lemos-system-bjxiyu`
+   ou a branch principal, conforme onde o código estiver).
+2. O framework "Vite" é detectado automaticamente (build `npm run build`,
+   output `dist`).
+3. Em **Environment Variables**, adicione:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_ANON_KEY`
+4. Deploy. A cada novo push na branch conectada, o Vercel republica
+   automaticamente.
+
+**Netlify:** mesmo fluxo — "Add new site → Import an existing project",
+selecione o repositório, confirme build `npm run build` / publish `dist`
+(já configurado em `netlify.toml`) e adicione as mesmas duas variáveis de
+ambiente em **Site settings → Environment variables**.
+
+> As mesmas duas variáveis (`VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`)
+> do seu `.env` local são as que devem ser cadastradas na plataforma de
+> deploy — são valores públicos (chave anônima, protegida por RLS), não
+> segredos de servidor.
+
+## 8. Estrutura do projeto
 
 ```
 src/
