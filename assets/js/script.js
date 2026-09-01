@@ -1,5 +1,5 @@
 /* ==========================================================================
-   mariana.dev — interações
+   mariana.studio — interações
    ========================================================================== */
 
 /* ---------- menu mobile ---------- */
@@ -50,32 +50,32 @@ if ('IntersectionObserver' in window) {
 const projects = [
   {
     title: 'Projeto Aurora',
-    category: 'Landing Page',
-    description: 'Página de conversão criada para apresentar um produto e captar clientes.',
+    category: 'Identidade Visual',
+    description: 'Criação de marca e identidade visual completa para uma marca que queria se destacar.',
     color: 'pink',
     size: 'full',
     link: '#',
   },
   {
     title: 'Estúdio Nômade',
-    category: 'Site Institucional',
-    description: 'Site institucional com foco em credibilidade e apresentação de serviços.',
+    category: 'Vídeo Institucional',
+    description: 'Captação e edição de vídeo institucional para apresentar a história da marca.',
     color: 'lilac',
     size: 'half',
     link: '#',
   },
   {
     title: 'Studio Menta',
-    category: 'Portfólio',
-    description: 'Portfólio pessoal para exibir projetos e atrair novos clientes.',
+    category: 'Social Media',
+    description: 'Peças e templates para redes sociais com identidade visual consistente.',
     color: 'yellow',
     size: 'half',
     link: '#',
   },
   {
     title: 'Loja Cravo',
-    category: 'E-commerce',
-    description: 'Loja virtual pensada para uma jornada de compra simples e agradável.',
+    category: 'Motion Design',
+    description: 'Animações e vinhetas para dar vida à comunicação da marca em vídeo.',
     color: 'dark',
     size: 'full',
     link: '#',
