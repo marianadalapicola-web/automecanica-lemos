@@ -271,11 +271,12 @@ h1,h2,h3{ font-family:var(--font-display); margin:0; line-height:1.02; }
   padding:30px; transform:rotate(-3deg); box-shadow:10px 12px 0 rgba(255,255,255,.08);
 }
 .about-photo{
-  aspect-ratio:1/1; border-radius:var(--radius-md); border:2px dashed var(--black);
+  aspect-ratio:1/1; border-radius:var(--radius-md); border:2.5px solid var(--black);
   background:linear-gradient(135deg,var(--pink-soft),var(--lilac-soft));
   display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+  overflow:hidden;
 }
-.about-photo__label{ font-family:var(--font-hand); font-size:1.3rem; color:var(--black); opacity:.6; }
+.about-photo img{ width:100%; height:100%; object-fit:cover; }
 .about-name{ font-size:1.6rem; font-weight:800; }
 .about-role{ font-size:.9rem; opacity:.65; margin:4px 0 18px; }
 .about-tools{ display:flex; flex-wrap:wrap; gap:8px; }
