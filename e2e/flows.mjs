@@ -1,4 +1,4 @@
-// Teste ponta a ponta dos fluxos principais no modo demonstração (navegador real).
+// Teste ponta a ponta dos fluxos principais sem login, com dados salvos no navegador (navegador real).
 // Uso: npm run dev (em outro terminal) e depois: node e2e/flows.mjs [url] [pasta-screenshots]
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
@@ -50,12 +50,9 @@ async function run(viewport, tag) {
   await page.evaluate(() => localStorage.clear());
   await page.reload();
 
-  step('1. tela de acesso (sem Supabase configurado → explica e oferece demonstração)');
-  await page.getByText('Sincronização ainda não configurada').waitFor();
-  await shot('01-auth');
-  await page.getByRole('button', { name: /modo demonstração/ }).click();
+  step('1. abre direto, sem login, salvando neste aparelho');
   await page.getByText(/Boas-vindas ao Glossy Money/).waitFor();
-  await page.getByText(/Modo demonstração: os dados ficam salvos/).waitFor();
+  await page.locator('.sync:visible', { hasText: 'Salvo neste aparelho' }).waitFor();
   await shot('02-welcome');
 
   step('contas: Corrente R$ 1.000 e Poupança R$ 500');

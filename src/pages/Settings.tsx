@@ -220,6 +220,18 @@ export default function Settings() {
               <button className="btn danger" onClick={removeAccount} disabled={busy}>Excluir minha conta</button>
             </div>
           </>
+        ) : !cloudConfigured ? (
+          <>
+            <h3 style={{ marginTop: -4 }}>Onde ficam seus dados</h3>
+            <p className="small">
+              Seus dados ficam salvos <strong>neste navegador, neste aparelho</strong> — não há login nem envio para a internet.
+              Por isso, o que você lança no celular não aparece no computador (e vice-versa), e limpar os dados do navegador apaga tudo.
+            </p>
+            <p className="small">
+              ✧ Faça um <strong>backup JSON</strong> de vez em quando (em “Gerenciamento de dados”, acima). Para usar em outro aparelho,
+              restaure esse backup lá.
+            </p>
+          </>
         ) : (
           <>
             <div className="banner demo">

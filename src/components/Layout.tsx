@@ -5,6 +5,7 @@ import { useApp } from '../store/AppContext';
 import { TransactionForm, type TxPreset } from './TransactionForm';
 import { Modal } from './ui';
 import type { Transaction } from '../data/types';
+import { cloudConfigured } from '../store/supabaseClient';
 
 const NAV = [
   { to: '/', label: 'Dashboard', short: 'Início', icon: 'home' },
@@ -38,6 +39,12 @@ export function Logo({ withSlogan }: { withSlogan?: boolean }) {
 
 export function SyncBadge() {
   const { mode, sync, online, retrySync } = useApp();
+  if (mode === 'demo' && !cloudConfigured)
+    return (
+      <span className="sync ok" title="Os dados ficam salvos neste navegador. Use o backup em Configurações para guardar uma cópia.">
+        <Icon name="check" size={14} /> Salvo neste aparelho
+      </span>
+    );
   if (mode === 'demo')
     return (
       <span className="sync demo" title="Os dados ficam salvos apenas neste navegador">
@@ -117,7 +124,7 @@ export function Layout({ children }: { children?: ReactNode }) {
             <SyncBadge />
           </header>
           <main className="content" id="conteudo">
-            {mode === 'demo' && (
+            {mode === 'demo' && cloudConfigured && (
               <div className="banner demo" role="note">
                 <Icon name="alert" />
                 <span className="grow">

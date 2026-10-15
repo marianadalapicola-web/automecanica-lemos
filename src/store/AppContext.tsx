@@ -66,7 +66,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // ───── Sessão / modo ─────
   useEffect(() => {
     if (!supabase) {
-      setMode(localStorage.getItem(DEMO_FLAG) === 'demo' ? 'demo' : 'signed-out');
+      // Sem Supabase configurado: o app funciona direto, sem login, salvando neste aparelho.
+      setMode('demo');
       return;
     }
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -178,7 +179,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setReady(false);
-    if (mode === 'demo') storeRef.current = new LocalDemoStore();
+    if (mode === 'demo') {
+      storeRef.current = new LocalDemoStore();
+      navigator.storage?.persist?.().catch(() => {});
+    }
     else if (mode === 'cloud' && user && supabase) storeRef.current = new SupabaseStore(supabase, user.id);
     else {
       storeRef.current = null;
@@ -298,7 +302,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const leaveDemo = useCallback(async () => {
     localStorage.removeItem(DEMO_FLAG);
-    setMode('signed-out');
+    setMode(supabase ? 'signed-out' : 'demo');
   }, []);
 
   const signOut = useCallback(async () => {
